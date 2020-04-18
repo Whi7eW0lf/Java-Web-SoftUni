@@ -4,6 +4,7 @@ import app.util.FileUtil;
 import app.util.FileUtilImpl;
 
 import javax.inject.Inject;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +20,9 @@ public class HomeServlet extends HttpServlet {
     private static final String FILE_PATH = "D:\\SoftUni-Tasks\\Java-Web-SoftUni\\Introduction to Java EE\\src\\main\\webapp\\views\\home.html";
 
     @Override
-    public void init() throws ServletException {
+    public void init(ServletConfig config) throws ServletException {
         this.fileUtil = new FileUtilImpl();
+        super.init(config);
     }
 
     @Override

@@ -8,6 +8,7 @@ import app.util.FileUtil;
 import app.util.FileUtilImpl;
 import org.modelmapper.ModelMapper;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,10 +27,11 @@ public class CreateServlet extends HttpServlet {
 
 
     @Override
-    public void init() {
+    public void init(ServletConfig config) throws ServletException {
         this.fileUtil = new FileUtilImpl();
         this.modelMapper = new ModelMapper();
         this.carService = new CarServiceImpl(this.modelMapper);
+        super.init(config);
     }
 
     @Override

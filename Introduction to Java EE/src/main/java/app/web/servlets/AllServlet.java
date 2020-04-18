@@ -7,6 +7,7 @@ import app.util.FileUtil;
 import app.util.FileUtilImpl;
 import org.modelmapper.ModelMapper;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,10 +26,11 @@ public class AllServlet extends HttpServlet {
     private CarService carService;
 
     @Override
-    public void init() throws ServletException {
+    public void init(ServletConfig config) throws ServletException {
         this.fileUtil = new FileUtilImpl();
         this.modelMapper = new ModelMapper();
         this.carService = new CarServiceImpl(this.modelMapper);
+        super.init(config);
     }
 
     @Override
