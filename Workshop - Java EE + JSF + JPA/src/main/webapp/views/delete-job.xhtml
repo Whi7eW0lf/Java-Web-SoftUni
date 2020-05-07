@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:include src="templates/head.xhtml"/>
+
+<body>
+<ui:include src="templates/head.xhtml"/>
+<div class="container-fluid">
+    <ui:include src="templates/user-navbar.xhtml"/>
+    <main>
+
+        <hr class="my-3"/>
+        <h1 class="text-center">Delete Job</h1>
+        <hr class="hr-3"/>
+        <h:form class="mx-auto w-15" method="post" action="/jobs/delete?id=1">
+            <div class="form-group">
+                <div class="label-holder d-flex justify-content-center">
+                    <label for="sector" class="h3 mb-2">Sector</label>
+                </div>
+                <h:outputText class="form-control" id="sector" name="sector"
+                              value="#{jobDetailsBean.getJobById(request.getParameter('id')).sector}" disabled="true"/>
+            </div>
+            <div class="form-group">
+                <div class="label-holder d-flex justify-content-center">
+                    <label for="profession" class="h3 mb-2">Profession</label>
+                </div>
+                <h:outputText class="form-control" id="profession" name="profession"
+                              value="#{jobDetailsBean.getJobById(request.getParameter('id')).profession}"
+                              disabled="true"/>
+            </div>
+            <div class="form-group">
+                <div class="label-holder d-flex justify-content-center">
+                    <label for="salary" class="h3 mb-2">Salary</label>
+                </div>
+                <h:outputText type="number" class="form-control" id="salary" name="salary"
+                              value="#{jobDetailsBean.getJobById(request.getParameter('id')).salary}" disabled="true"/>
+            </div>
+            <div class="form-group">
+                <div class="label-holder d-flex justify-content-center">
+                    <label for="description" class="h3 mb-2">Description</label>
+                </div>
+                <h:inputTextarea rows="4" class="form-control" id="description" name="description"
+                                 value="#{jobDetailsBean.getJobById(request.getParameter('id')).description}"
+                                 disabled="true"
+                />
+            </div>
+            <input type="hidden" value="#{jobDetailsBean.getJobById(request.getParameter('id')).id}" name="id"/>
+            <div class="button-holder d-flex justify-content-center">
+                <h:commandButton styleClass="btn btn-danger" value="Delete" action="#{deleteBean.deleteJob}"/>
+            </div>
+        </h:form>
+        <hr class="my-3"/>
+    </main>
+    <ui:include src="templates/footer.xhtml"/>
+</div>
+</body>
+</html>
