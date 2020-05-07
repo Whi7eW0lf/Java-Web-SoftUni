@@ -16,9 +16,6 @@ public class LoggedUserFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         String isLogged = (String) ((HttpServletRequest) request).getSession().getAttribute("username");
 
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAa");
-        System.out.println(isLogged);
-
         if (isLogged != null){
             ((HttpServletResponse) response).sendRedirect("/views/home.jsf");
             return;
